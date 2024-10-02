@@ -26,5 +26,5 @@ Suricata alerts are pushed to a Redis server under a key named "suricata". The e
 6. There are probably more issues... 
 
 ### Credits
-Thanks to [@Benoriusju] for the original script that I have customized to work with EdgeOS api calls.
+Thanks to [@Benoriusju](https://github.com/beinoriusju) for the original script that I have customized to work with EdgeOS api calls.
 Thanks to [@Matthew1471] for documenting the EdgeOS API https://github.com/Matthew1471/EdgeOS-API
