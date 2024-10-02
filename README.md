@@ -8,7 +8,7 @@ Suricata alerts need to be pushed to a Redis server under a key named "suricata"
 
 ### Instruction:
 
-1. Configure a Redis server. No need for something super fancy. I am using a Docker instance running on a Raspberry Pi.
+1. Configure a Redis server. No need for something super fancy. I am using a Docker instance (https://hub.docker.com/r/redis/redis-stack which comes with a nice admin interface) running on a Raspberry Pi.
 2. Configure Suricata to add an additional eve-log logger instance of type Redis pointing to your Redis server. Use the key name "suricata" and the list mode.
 3. On the EdgeRouter, create a firewall address group named "IP_BLACKLIST"
 4. Configure your router to deny all incoming traffic from IPs in the IP_BLACkLIST for both WAN_IN and WAN_LOCAL 
