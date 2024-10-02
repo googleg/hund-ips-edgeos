@@ -13,7 +13,7 @@ Suricata alerts need to be pushed to a Redis server under a key named "suricata"
 3. On the EdgeRouter, create a firewall address group named "IP_BLACKLIST"
 4. Configure your router to deny all incoming traffic from IPs in the IP_BLACkLIST for both WAN_IN and WAN_LOCAL 
 5. On the EdgeRouter, add an admin user named "api_user"
-6. Customize the script and enter the user assword, redis server information relevant to your setup
+6. Customize the script and enter the user password, redis server information relevant to your setup
 7. On the machine with the Redis instance, configure the script to run as a daemon (work in progress, instructions will follow)
 
 ### Known issues
