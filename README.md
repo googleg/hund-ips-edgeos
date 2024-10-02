@@ -22,7 +22,7 @@ Suricata alerts need to be pushed to a Redis server under a key named "suricata"
 2. The blacklist on the router will potentially grow infinitely. You can regularly delete and recreate the list if it becomes too big. Address-groups are limited to ~65000 entries I think
 3. The script does an infinite loop and seems to be at times a bit heavy on the resources, to be improved
 4. The router admin password is stored in clear text in the source of the script. Make sure to protect it (chmod 700 recommended)
-5. By default new found IPs are added to the blacklist every 30 seconds. Be aware that once done any user logged in on the router will be asked to refresh its screen which may be disruptive in case you are in the middle of something.
+5. By default new found IPs are added to the blacklist every 30 seconds. Be aware that when the address-group on the router gets updated any logged in user will be asked to refresh their screen which may be disruptive in case you are in the middle of something.
 6. There are probably more issues... 
 
 ### Credits
