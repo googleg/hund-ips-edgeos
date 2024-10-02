@@ -84,12 +84,8 @@ try:
             if (ip_found) and (not ip_found.startswith("192.168.")) and (not ip_found.startswith("10.")):
                 ip_batch.append(ip_found)
                 print("Queued IP for blocking: {}".format(ip_found))
-                # tempo à virer
-                # block_ips(ip_batch)
-                # fin tempo
             else:
                 print("No IP found")
-            #exit()
 
 except KeyboardInterrupt:
     print("Stopped by the user.")
