@@ -14,7 +14,10 @@ Suricata alerts are pushed to a Redis server under a key named "suricata". The e
 4. Configure your router to deny all incoming traffic from IPs in the IP_BLACkLIST for both WAN_IN and WAN_LOCAL 
 5. On the EdgeRouter, add an admin user named "api_user"
 6. Customize the script and enter the user password, redis server information relevant to your setup
-7. On the machine with the Redis instance (or any other machine that can connect to the Redis server for that matter), configure the script to run as a daemon (work in progress, instructions will follow)
+7. On the machine with the Redis instance (or any other machine that can connect to the Redis server for that matter), copy the script into /usr/local/bin change its owner to a local user and change the permission of the script file to 700
+8. Copy the edgeos-ips.service file into /etc/systemd/system, edit the file and change the User= to your local username
+9. Reload the services: sudo systemctl daemon-reload
+10. Start the edgeos-ips service: sudo service edgeos-ips start
 
 ### Known issues
 
