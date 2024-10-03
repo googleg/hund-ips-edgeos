@@ -8,9 +8,11 @@ def block_ips(ip_addresses):
     global edgeos_login
     global edgeos_password
     global set_uri
+    global logout_uri
 
     # Build URLs for the api calls
     login_url="https://" + edgeos_host + "/"
+    logout_url="https://" + edgeos_host + logout_uri
     set_url="https://" + edgeos_host + set_uri
     
     unique_ips = list(set(ip_addresses))  # Convert list to set to remove duplicates, then back to list
@@ -43,6 +45,10 @@ def block_ips(ip_addresses):
                         print("Failed to record IP in blacklist")
                     else:
                         print("Added {} to the blacklist".format(new_ip))
+                #logout
+                req = Request('GET', logout_url, headers=my_headers)  
+                prepped = s.prepare_request(req)
+                response = s.send(prepped, allow_redirects=False, verify=False)
             else:
                 print("Failed to login.")
             print("Added {} unique IPs to the blacklist.".format(len(unique_ips)))
@@ -54,6 +60,7 @@ edgeos_host = "IP_OF_YOUR_ROUTER"
 edgeos_login = "api_user"
 edgeos_password = "CHANGE_PASSWORD"
 set_uri = "/api/edge/set.json"
+logout_uri = "/logout"
 
 # Connect to Redis
 # My REDIS instance is running on the localhost as a docker container listening on 6380
@@ -86,10 +93,10 @@ try:
                 print("Queued IP for blocking: {}".format(ip_found))
             else:
                 print("No IP found")
-
+        
 except KeyboardInterrupt:
     print("Stopped by the user.")
     if ip_batch:  # Ensure to block remaining IPs before exiting
         block_ips(ip_batch)
 except Exception as e:
-    print("An error occurred: {e}")
+    print("An error occurred: {}".format(e))
