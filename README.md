@@ -4,9 +4,9 @@ This is a custom IPS solution for EdgeOS routers to block malicious IP adresses 
 
 ### How this works?
 
-Suricata alerts are pushed to a Redis server under a key named "suricata". The edgeos_ips.py script runs as a daemon and gathers the offending IPs from the Suricata alerts stored in Redis, and dynamically updates an address-list named IP_BLACKLIST on the EdgeOS router using api calls. The address-group is used in firewall rules to block incoming traffic.
+Suricata alerts are pushed to a Redis server under a key named "suricata". The edgeos_ips.py script runs as a daemon and gathers the offending IPs from the Suricata alerts stored in Redis, and dynamically updates an address-group named IP_BLACKLIST on the EdgeOS router using api calls. The address-group is used in firewall rules to block incoming traffic.
 
-### Instruction:
+### Instructions:
 
 1. Configure a Redis server. No need for something super fancy. I am using a Docker instance (https://hub.docker.com/r/redis/redis-stack which comes with a nice admin interface) running on a Raspberry Pi.
 2. Configure Suricata to add an additional eve-log logger instance of type Redis pointing to your Redis server. Use the key name "suricata" and the list mode.
