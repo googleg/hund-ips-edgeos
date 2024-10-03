@@ -1,0 +1,14 @@
+[Unit]
+Description=My Python IPS
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=MY_USERNAME
+WorkingDirectory=/usr/local/bin
+ExecStart=/usr/bin/python3 /usr/local/bin/edgeos_ips.py
+Restart=always
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
